@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const popupOverlay = document.querySelector('.popup-overlay')
-    const showPopupBtn = document.querySelector('#show-popup')
-    const closePopupBtn = document.querySelector('.popup-close')
-    const popupForm = document.querySelector('#popup-form')
+    const popupOverlay = document.querySelector('#popup-overlay');
+    const showPopupBtn = document.querySelector('#show-popup');
+    const closePopupBtn = document.querySelector('.popup-close');
+    const popupForm = document.querySelector('#popup-form');
 
 //     function openPopup() {
 //         popupOverlay.style.display = 'flex'
@@ -40,23 +40,25 @@ document.addEventListener('DOMContentLoaded', () => {
     
 // })
 
-showPopupBtn.addEventListener('click', () => {
-    popupOverlay.style.display = 'flex'
-})
+    showPopupBtn.addEventListener('click', () => {
+        popupOverlay.style.display = 'flex';
+    });
 
-closePopupBtn.addEventListener('click', () => {
-    popupOverlay.style.display = 'none'
-})
+    closePopupBtn.addEventListener('click', () => {
+        popupOverlay.style.display = 'none';
+    });
 
-popupOverlay.addEventListener('click', (event) => {
-    if (event.target === popupOverlay) {
-        popupOverlay.style.display = 'none'
-    }
-})
+    popupOverlay.addEventListener('click', (event) => {
+        if (event.target === popupOverlay) {
+            popupOverlay.style.display = 'none';
+        }
+    });
 
-popupForm.addEventListener('submit', (event) => {
-    event.preventDefault()
-    alert('Сообщение отправлено')
-    popupOverlay.style.display = 'none'
-    popupForm.reset()
-})
+    popupForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        alert("Сообщение отправлено");
+        popupOverlay.style.display = "none";
+        popupForm.reset();
+    });
+
+});
