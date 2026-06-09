@@ -166,7 +166,7 @@ footer {
     padding: 5px 10px;
     position: absolute;
     z-index: 1;
-    bottom: 125%;
+    /* bottom: 125%; */
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
@@ -174,4 +174,80 @@ footer {
 
 .tooltip img {
     width: 100%;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000 ;
+}
+
+.popup {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--dark-gray);
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #e5e5e5;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.accordion-content p {
+    padding: 15px;
+    margin: 0;
+}
+
+.tab-content {
+    display: none !important;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.tab-content.active {
+    display: block !important;
 }
