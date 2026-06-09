@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     popupForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        alert("Сообщение отправлено");
+        alert( "Сообщение отправлено" );
         popupOverlay.style.display = "none";
         popupForm.reset();
     });
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-    accordionHeaders.forEach((header => {
+    accordionHeaders.forEach(( header => {
         header.addEventListener('click', () => {
             const content = header.nextElementSibling;
             const isOpen = header.classList.contains('active');
@@ -103,49 +103,51 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.style.overflow = 'visible';
  
     const sliderContainer = document.querySelector('.slider-container');
-    sliderContainer.style.overflow = 'hidden';
+    if (sliderContainer) {
+        sliderContainer.style.overflow = 'hidden';
+    };
 
     slides.forEach(slide => {
         slide.style.minWidth = '100%';
-
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-            dots.forEach(dot => dot.classList.remove('active'));
-            if (dots[currentSlide]) {
-                dots[currentSlide].classList.add('active');
-            }
-
-            leftArrow.style.opacity = currentSlide === 0 ? '0.3' : '1';
-            leftArrow.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
-
-            rightArrow.style.opacity = currentSlide === slidesCount - 1 ? '0.3' : '1';
-            rightArrow.style.cursor = currentSlide === slidesCount - 1 ? 'not-allowed' : 'pointer';
-        }
-
-        rightArrow.addEventListener('click', () => {
-            if (currentSlide < slidesCount - 1) {
-                currentSlide++;
-                updateSlider();
-            }
-        });
-
-        leftArrow.addEventListener('click', () => {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlider();
-            }
-        });
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                updateSlider();
-            });
-        });
-
-        updateSlider();
+        slide.style.flexShrink = '0';
     });
 
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentSlide * 100}%)` ;
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add('active');
+        }
+
+        leftArrow.style.opacity = currentSlide === 0 ? '0.3' : '1';
+        leftArrow.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
+
+        rightArrow.style.opacity = currentSlide === slidesCount - 1 ? '0.3' : '1';
+        rightArrow.style.cursor = currentSlide === slidesCount - 1 ? 'not-allowed' : 'pointer';
+    }
+
+    rightArrow.addEventListener('click', () => {
+        if (currentSlide < slidesCount - 1 ) {
+            currentSlide++;
+            updateSlider();
+        }
+    });
+
+    leftArrow.addEventListener('click', () => {
+        if (currentSlide > 0 ) {
+            currentSlide--;
+            updateSlider();
+        }
+    });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlider();
+        });
+    });
+
+    updateSlider();
 
 });
